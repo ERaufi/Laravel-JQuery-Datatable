@@ -42,10 +42,6 @@ class CovidsController extends Controller
             ->with('countries')
             ->orderBy($orderByColumn, $orderDirection);
 
-        // Apply filters
-        // if ($request->has('country_id')) {
-        //     $query->where('country_id', $request->country_id);
-        // }
 
         $totalRecords = $query->count();
 
@@ -57,7 +53,7 @@ class CovidsController extends Controller
         $covids = $query->skip($start)->take($length)->get();
 
         return response()->json([
-            'draw' => $request->input('draw'),
+            // 'draw' => $request->input('draw'),
             'recordsTotal' => $totalRecords,
             'recordsFiltered' => $totalRecords,
             'data' => $covids,
